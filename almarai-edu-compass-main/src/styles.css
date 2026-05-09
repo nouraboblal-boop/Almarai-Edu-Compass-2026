@@ -1,0 +1,180 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Almarai', system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+}
+
+:root {
+  --background: oklch(0.98 0.01 230);
+  --foreground: oklch(0.2 0.04 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.04 250);
+  --primary: oklch(0.55 0.2 265);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.96 0.02 250);
+  --muted: oklch(0.95 0.01 250);
+  --muted-foreground: oklch(0.5 0.03 250);
+  --accent: oklch(0.7 0.18 50);
+  --border: oklch(0.9 0.02 250);
+  --gold: oklch(0.82 0.15 85);
+  --gold-deep: oklch(0.65 0.16 70);
+}
+
+@font-face {
+  font-family: 'Almarai';
+  font-weight: 400;
+  src: url('https://fonts.gstatic.com/s/almarai/v25/tsstApxBaigK_hnnQ1iFqg.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Almarai';
+  font-weight: 700;
+  src: url('https://fonts.gstatic.com/s/almarai/v25/tssoApxBaigK_hnnS_anhnicoq72sXg.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Almarai';
+  font-weight: 900;
+  src: url('https://fonts.gstatic.com/s/almarai/v25/tssoApxBaigK_hnnS-aghnicoq72sXg.woff2') format('woff2');
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Almarai', system-ui, sans-serif;
+  color: var(--foreground);
+  background-color: #cfeaf7;
+}
+
+.app-bg {
+  background-image:
+    linear-gradient(135deg, rgba(125, 211, 252, 0.32) 0%, rgba(129, 140, 248, 0.28) 50%, rgba(255, 255, 255, 0.46) 100%),
+    url('/bg-school.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.glass, .glass-strong, .glass-soft {
+  transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease;
+}
+.glass:hover, .glass-strong:hover, .glass-soft:hover {
+  animation: wobble-soft .55s cubic-bezier(.22,1,.36,1) both;
+}
+.glass {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 2px solid rgba(186, 230, 253, 0.85);
+  box-shadow:
+    0 14px 32px -12px rgba(125, 211, 252, 0.45),
+    0 6px 18px -8px rgba(254, 240, 138, 0.35),
+    inset 0 1px 0 rgba(255,255,255,0.85);
+}
+.glass-strong {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  border: 2px solid rgba(253, 230, 138, 0.9);
+  box-shadow:
+    0 18px 40px -12px rgba(253, 230, 138, 0.45),
+    0 8px 22px -10px rgba(186, 230, 253, 0.45),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+}
+.glass-soft {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 2px solid rgba(187, 247, 208, 0.85);
+  box-shadow: 0 10px 26px -10px rgba(187, 247, 208, 0.5);
+}
+
+.r-huge { border-radius: 44px; }
+.r-big { border-radius: 32px; }
+.r-mid { border-radius: 22px; }
+
+.text-heading {
+  font-family: 'Almarai', system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: #1e3a5f;
+}
+
+.gold-grad {
+  background: linear-gradient(135deg, #fde68a 0%, #fbbf24 100%);
+}
+.primary-grad {
+  background: linear-gradient(135deg, #7dd3fc 0%, #818cf8 100%);
+}
+
+/* Wobble (gentle jelly) on hover */
+@keyframes wobble-soft {
+  0%   { transform: rotate(0deg) scale(1); }
+  35%  { transform: rotate(-0.6deg) scale(1.012); }
+  70%  { transform: rotate(0.5deg) scale(1.008); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+.wobble-hover { transition: transform .35s cubic-bezier(.22,1,.36,1); }
+.wobble-hover:hover { animation: wobble-soft .55s cubic-bezier(.22,1,.36,1) both; }
+
+/* Twinkle for corner stickers */
+@keyframes twinkle {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: .9; }
+  50%      { transform: scale(1.18) rotate(8deg); opacity: 1; }
+}
+.twinkle { animation: twinkle 2.4s ease-in-out infinite; }
+
+/* Auto sticker corner on glass cards */
+.glass-strong { position: relative; }
+.glass-strong::after {
+  content: "⭐";
+  position: absolute;
+  top: -8px;
+  inset-inline-start: -8px;
+  font-size: 22px;
+  filter: drop-shadow(0 3px 6px rgba(251, 191, 36, .45));
+  animation: twinkle 2.6s ease-in-out infinite;
+  pointer-events: none;
+}
+.glass { position: relative; }
+.glass::after {
+  content: "☀️";
+  position: absolute;
+  top: -8px;
+  inset-inline-end: -8px;
+  font-size: 18px;
+  animation: twinkle 3s ease-in-out infinite;
+  pointer-events: none;
+}
+.no-sticker::after { display: none !important; }
+
+
+/* Confetti */
+@keyframes confetti-fall {
+  0%   { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+}
+
